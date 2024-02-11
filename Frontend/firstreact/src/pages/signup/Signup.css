@@ -61,5 +61,5 @@ input{
 
 body{
     background-image: url("https://img.freepik.com/free-photo/nobody-doctors-office-with-medical-equipment-tools_482257-27168.jpg?w=1380&t=st=1707676512~exp=1707677112~hmac=0a88347274393214dd5eeb57b5fd62b31a4ed78bcb91034c3f84c3f1e578db8b");
-    
+    background-size: cover; 
 }

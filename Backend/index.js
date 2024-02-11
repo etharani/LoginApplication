@@ -17,8 +17,7 @@ mongoose.connect('mongodb+srv://tharani2297:tharu%404411@tharu.jikk6hd.mongodb.n
     console.error('MongoDB connection error', err);
   });
 
-  app.use(user);
-  
+  app.use("/",user);
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

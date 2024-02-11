@@ -1,13 +1,15 @@
+import Signup from "./pages/signup/Signup";
 
-import './App.css';
-import Login from './pages/login/Login';
+
+
+
 
 
 function App() {
   return (
     <div className="App">
-     hi tharani
-    <Login/>
+  <Signup/>
+ 
 
 
     </div>

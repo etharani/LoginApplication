@@ -18,11 +18,11 @@ function Login() {
       event.preventDefault();
       let errors=initialStateErrors;
       
-      if(inputs.username===""){
+      if(inputs.username === ""){
        errors.username.required=true;
        
       }
-      if(inputs.password===""){
+      if(inputs.password === ""){
        errors.password.required=true;
       
        
@@ -74,14 +74,14 @@ function Login() {
           <label htmlFor="password" className="form-label">Password :</label>
           <input type="password" className="form-control" id="password" name="password" onChange={handleInput} placeholder="Enter your Password"/>
           {
-            errors.username.required?
+            errors.password.required?
             <span class="text-danger" >Password is required.</span>:null
           }
     </div>
     <div className="btn"> 
             <input type="submit" className="btn btn-login float-right"  value="Login"/>
     </div>
-            <div className="signup_link">Don't have a account? <Link to="/register">Register now</Link></div>
+            
     </form>
     
 </div>

@@ -18,7 +18,7 @@ function Signup() {
       event.preventDefault();
       let errors=initialStateErrors;
       
-      if(inputs.username===""){
+      if(inputs.username ===""){
        errors.username.required=true;
        
       }

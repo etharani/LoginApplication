@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import axios from 'axios';
+import { Link } from "react-router-dom";
 import "./Signup.css";
 
-
+import { useNavigate } from "react-router-dom";
 function Signup() {
    const initialStateErrors={
       username:{required:false},
@@ -10,23 +12,30 @@ function Signup() {
 
    const [errors,setErrors]=useState(initialStateErrors)
 
-const [error,setError]=useState('');
+  const navigate =useNavigate();
 
-   const handleSubmit=(event)=>{
+   const handleSubmit=async(event)=>{
       event.preventDefault();
       let errors=initialStateErrors;
-      let hashError=false;
-      if(inputs.username=""){
+      
+      if(inputs.username===""){
        errors.username.required=true;
-       setError("error");
+       
       }
-      if(inputs.password=""){
+      if(inputs.password===""){
        errors.password.required=true;
-       setError("error");
+      
        
       }
       setErrors(errors);
-      console.log(errors);
+      console.log(inputs);
+      try {
+        const data=await axios.post("http://localhost:8088/register",inputs)
+        console.log(data);
+        navigate("/login");
+      } catch (error) {
+        console.log(error);
+      }
    }
 
    const [inputs,setInputs]=useState({
@@ -35,7 +44,7 @@ const [error,setError]=useState('');
    })
 
    const handleInput=(event)=>{
-     setInputs({...inputs,[event.target.username]:event.target.value})
+     setInputs({...inputs,[event.target.name]:event.target.value})
     
    }
 
@@ -49,9 +58,9 @@ const [error,setError]=useState('');
           <label htmlFor="user" className="form-label">User Name :</label>
           <input type="text" className="form-control" id="user" name="username" onChange={handleInput} placeholder="Enter your User name"/>
           {
-            // errors.username.required?
-            // <span class="text-danger" >User Name is required.</span>:null
-                                error=='error'&&<span>user name is required</span>
+            errors.username.required?
+            <span class="text-danger" >User Name is required.</span>:null
+                            
 
                                 
             }
@@ -67,7 +76,7 @@ const [error,setError]=useState('');
     <div className="btn"> 
             <input type="submit" className="btn btn-login float-right"  value="Register"/>
     </div>
-            <div className="signup_link">Already a member ? <a href="index.html">Login now</a></div>
+            <div className="signup_link">Already a member ? <Link to="/login">Login now</Link></div>
     </form>
     
 </div>

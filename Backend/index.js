@@ -18,6 +18,6 @@ mongoose.connect('mongodb+srv://tharani2297:tharu%404411@tharu.jikk6hd.mongodb.n
   });
 
   app.use("/",user);
-app.listen(port, () => {
+  app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

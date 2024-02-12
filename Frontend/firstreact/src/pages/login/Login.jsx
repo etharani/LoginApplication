@@ -1,48 +1,43 @@
 import React, { useState } from 'react'
-import axios from 'axios';
-import { Link } from "react-router-dom";
+import axios from 'axios'; // Import Axios
 import "./Login.css";
-
 import { useNavigate } from "react-router-dom";
+
 function Login() {
    const initialStateErrors={
       username:{required:false},
       password:{required:false}
    }
 
-   const [errors,setErrors]=useState(initialStateErrors)
+  const [errors,setErrors]=useState(initialStateErrors)
 
   const navigate =useNavigate();
 
-   const handleSubmit=async(event)=>{
+  const handleSubmit=async(event)=>{
       event.preventDefault();
       let errors=initialStateErrors;
       
       if(inputs.username === ""){
        errors.username.required=true;
-       
       }
       if(inputs.password === ""){
-       errors.password.required=true;
-      
-       
+       errors.password.required=true; 
       }
       setErrors(errors);
       console.log(inputs);
       try {
+        //Connection
         const data=await axios.post("http://localhost:8088/login",inputs)
         console.log(data.status);
         if(data.status==200){
           navigate("/home");
         }
-       
-      
       } catch (error) {
         console.log(error);
         alert("Not Match Username or Password");
       }
    }
-
+   //Handle to input 
    const [inputs,setInputs]=useState({
       username:"",
       password:""
@@ -62,12 +57,11 @@ function Login() {
     <div className="mb-3">
           <label htmlFor="user" className="form-label">User Name :</label>
           <input type="text" className="form-control" id="user" name="username" onChange={handleInput} placeholder="Enter your User name"/>
+          //
           {
             errors.username.required?
+            // If there is an error in providing username input then the comment in span will be displayed.
             <span class="text-danger" >User Name is required.</span>:null
-                            
-
-                                
             }
     </div>
     <div className="mb-3">

@@ -32,7 +32,7 @@ router.post('/register', async (req, res) => {
     }
   });
 
-  //login
+  //handle forlogin 
   router.post('/login', async (req, res) => {
     try {
       const { username, password } = req.body;

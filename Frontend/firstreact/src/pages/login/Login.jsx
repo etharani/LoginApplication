@@ -57,6 +57,7 @@ function Login() {
     <div className="mb-3">
           <label htmlFor="user" className="form-label">User Name :</label>
           <input type="text" className="form-control" id="user" name="username" onChange={handleInput} placeholder="Enter your User name"/>
+        
           {
             errors.username.required?
             // If there is an error in providing username input then the comment in span will be displayed.
@@ -74,7 +75,7 @@ function Login() {
     <div className="btn"> 
             <input type="submit" className="btn btn-login float-right"  value="Login"/>
     </div>
-            
+    <p>Welcome to our page</p>       
     </form>
     
 </div>
